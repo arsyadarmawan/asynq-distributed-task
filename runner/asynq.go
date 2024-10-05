@@ -8,21 +8,25 @@ import (
 
 type AsynqRunnerOpts struct {
 	AsynqServer *asynq.Server
+	Mux         *asynq.ServeMux
 }
 
 type AsynqRunner struct {
 	opts AsynqRunnerOpts
-	mux  *asynq.ServeMux
 }
 
 func NewAsynqRunner(opts AsynqRunnerOpts) *AsynqRunner {
-	return &AsynqRunner{opts: opts, mux: asynq.NewServeMux()}
+	return &AsynqRunner{opts: opts}
 }
 
 func (r AsynqRunner) AddHandlerRegistry(registry registry.HandlerRegistry) {
-	registry.RegisterRoutesTo(r.mux)
+	registry.RegisterRoutesTo(r.opts.Mux)
 }
 
 func (a AsynqRunner) Run(context context.Context) error {
-	return a.opts.AsynqServer.Run(a.mux)
+	err := a.opts.AsynqServer.Run(a.opts.Mux)
+	if err != nil {
+		return err
+	}
+	return nil
 }

@@ -6,15 +6,15 @@ import (
 	"context"
 )
 
-type AsynqEnqueue struct {
+type Enqueuer struct {
 	client *asynqClient.Client
 }
 
-func NewEnqueuer(client *asynqClient.Client) *AsynqEnqueue {
-	return &AsynqEnqueue{client: client}
+func NewEnqueuer(client *asynqClient.Client) Enqueuer {
+	return Enqueuer{client: client}
 }
 
-func (e AsynqEnqueue) Enqueue(ctx context.Context, name string, payload any) error {
+func (e Enqueuer) Enqueue(ctx context.Context, name string, payload any) error {
 	task, err := task.NewAsynqTask(name, payload, e.client.Options...)
 	if err != nil {
 		return err

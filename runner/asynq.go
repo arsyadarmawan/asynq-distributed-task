@@ -1,6 +1,7 @@
 package runner
 
 import (
+	"asynq-distributed-task/registry"
 	"context"
 	"github.com/hibiken/asynq"
 )
@@ -14,8 +15,12 @@ type AsynqRunner struct {
 	mux  *asynq.ServeMux
 }
 
-func NewAsynqRunner(opts AsynqRunnerOpts, mux *asynq.ServeMux) *AsynqRunner {
-	return &AsynqRunner{opts: opts, mux: mux}
+func NewAsynqRunner(opts AsynqRunnerOpts) *AsynqRunner {
+	return &AsynqRunner{opts: opts, mux: asynq.NewServeMux()}
+}
+
+func (r AsynqRunner) AddHandlerRegistry(registry registry.HandlerRegistry) {
+	registry.RegisterRoutesTo(r.mux)
 }
 
 func (a AsynqRunner) Run(context context.Context) error {

@@ -1,8 +1,8 @@
 package runner
 
 import (
-	"asynq-distributed-task/registry"
 	"context"
+	"github.com/arsyadarmawan/asynq-distributed-task/registry"
 	"github.com/hibiken/asynq"
 )
 

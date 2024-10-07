@@ -1,14 +1,14 @@
 package main
 
 import (
-	"asynq-distributed-task/client"
-	"asynq-distributed-task/enqueue/enqueueimpl"
-	"asynq-distributed-task/message"
-	"asynq-distributed-task/message/messageimpl"
-	"asynq-distributed-task/runner"
-	"asynq-distributed-task/server"
 	"context"
 	"fmt"
+	"github.com/arsyadarmawan/asynq-distributed-task/client"
+	"github.com/arsyadarmawan/asynq-distributed-task/enqueue/enqueueimpl"
+	"github.com/arsyadarmawan/asynq-distributed-task/message"
+	"github.com/arsyadarmawan/asynq-distributed-task/message/messageimpl"
+	"github.com/arsyadarmawan/asynq-distributed-task/runner"
+	"github.com/arsyadarmawan/asynq-distributed-task/server"
 	"github.com/hibiken/asynq"
 )
 

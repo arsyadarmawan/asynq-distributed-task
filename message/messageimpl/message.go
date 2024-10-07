@@ -1,11 +1,11 @@
 package messageimpl
 
 import (
-	"asynq-distributed-task/enqueue/enqueueimpl"
-	"asynq-distributed-task/message"
 	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/arsyadarmawan/asynq-distributed-task/enqueue/enqueueimpl"
+	"github.com/arsyadarmawan/asynq-distributed-task/message"
 	"github.com/hibiken/asynq"
 	log "github.com/sirupsen/logrus"
 )

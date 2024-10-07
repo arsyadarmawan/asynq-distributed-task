@@ -1,9 +1,9 @@
 package enqueueimpl
 
 import (
-	asynqClient "asynq-distributed-task/client"
-	"asynq-distributed-task/common/task"
 	"context"
+	asynqClient "github.com/arsyadarmawan/asynq-distributed-task/client"
+	"github.com/arsyadarmawan/asynq-distributed-task/common/task"
 )
 
 type Enqueuer struct {
